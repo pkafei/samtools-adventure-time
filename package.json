@@ -1,15 +1,15 @@
 {
-  "name": "get-dat",
+  "name": "get-SAMtools",
   "version": "1.0.0",
-  "description": "workshop content for learning dat",
+  "description": "workshop content for learning SAMtools",
   "main": "index.js",
   "scripts": {
-    "render": "submarine markdown guide --header='Get Dat' --footer='<a href=\"https://github.com/maxogden/dat\">dat on github</a>'",
+    "render": "submarine markdown guide --header='SAMtools Adventure-time' --footer='<a href=\"https://github.com/pkafei/samtools-adventure-time\">SAMtools on github</a>'",
     "deploy": "gh-pages-deploy",
     "build": "browserify index.js -o bundle.js && browserify terminal.js -o terminal-bundle.js",
     "start": "beefy index.js:bundle.js terminal.js:terminal-bundle.js"
   },
-  "author": "max ogden",
+  "author": "portia burton",
   "license": "BSD",
   "watch": {
     "build": "workshop/*.md"
