@@ -11,8 +11,8 @@ if (!qs.id) {
 }
 
 var opts = {
-  guide: 'guide/',
   console: 'terminal.html',
+  guide: 'guide/',
   server: qs.server || (production ? 'try-dat.com' : 'dev.try-dat.com:8080'),
   id: qs.id
 }

@@ -1,6 +1,6 @@
-**get-dat** is a tutorial that teaches you how to work with datasets using <a href="http://dat-data.com" target="_blank">dat</a>.
+**get-samtools** is a tutorial that teaches you how to work with SAMtoolss using <a href="http://samtools.sourceforge.net/" target="_blank">SAMtools</a>.
 
-To the left there is a terminal that is connected to a private server that has the `dat` CLI tool installed. 
+To the left there is a terminal that is connected to a private server that has the `dat` CLI tool installed.
 
 In this panel you will find step by step instructions for this tutorial. There are navigation links at the **bottom** of each page.
 
