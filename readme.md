@@ -1,11 +1,8 @@
-# get-dat
+# adventure-time for samtools
+based on adventure-time for get-dat https://github.com/maxogden/get-dat
 
-## A command line tutorial to learn `dat`
+### Run the demo
 
-This repo contains the content for the workshop. 
-
-First install dat on your command line: `npm install dat -g`
-
-Then follow the instructions from each markdown (`.md`) file in this repo, in order.
-
-More lessons coming soon! Leave feedback in the issue tracker.
+- install docker (docker for linux, boot2docker for mac/windows)
+- install and run https://github.com/pkafei/samtools-adventure-time
+- install and run # adventure-time for samtools
