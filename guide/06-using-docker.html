@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+  <title>Get Dat</title>
+  <style>
+    body {
+      font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+      font-weight: 300;
+      color: #333;
+      line-height: 1.65em;
+      font-size: 15px;
+    }
+
+    .site-header {
+      margin: 20px 0;
+      padding: 15px 0;
+      text-align: center;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .site-header-text {
+      font-size: 50px;
+      letter-spacing: 2px;
+      color: #333;
+      line-height: 1em;
+      font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+    }
+
+    .site-footer {
+      font-size: 12px;
+      color: #999;
+      margin-top: 20px;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    .wrapper {
+      width: 100%;
+      margin: auto;
+      max-width: 640px;
+    }
+
+    .navlink {
+      display: inline-block;
+      width: 49%;
+    }
+
+    .nextp { text-align: right; }
+
+    code, pre {
+      background: #f5f5f5;
+      border-radius: 2px;
+      font-size: 14px;
+      padding: 3px;
+    }
+
+    pre code { padding: 0;}
+
+    a {
+      color: #08c;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="site-header">
+      <a class="site-header-text" href="./index.html">Get Dat</a>
+    </header>
+
+    <section class="content">
+
+      <h1 id="using-docker">Using docker</h1>
+<p>Once you have some data, and you want to do fun things with it, you usually have to install extra software. </p>
+<p>This can be really difficult if the software requires installing lots of dependencies, e.g. specific versions of Python or Ruby.</p>
+<p>To make this process easier we have been using <a href="http://docker.io/" target="_blank">docker</a> to build lightweight linux containers that come pre-installed with various data processing tools and all of their dependencies.</p>
+<p>We have written a data processing program that you can stream data into and it will render a bar chart. It uses a bar chart rendering program <a href="https://github.com/bitly/data_hacks/blob/master/data_hacks/bar_chart.py" target="_blank">written in Python</a> but in order to make it easier to use we also published a <a href="https://registry.hub.docker.com/u/bmpvieira/barchart/dockerfile/" target="_blank">docker container</a> that has Python + all the other dependencies for the bar chart pre-installed.</p>
+<p>To render the bar chart, first make sure your terminal is inside the <code>eukaryota</code> dat repository, and run the following command:</p>
+<pre><code>dat cat | docker run -i bmpvieira/barchart
+</code></pre><p>This pipes the <code>dat cat</code> JSON data into the barchart program running in docker. You should see a barchart show up in your terminal.</p>
+
+        <a class="lastp navlink" href="05-dat-clone.html">Previous: 05-dat-clone</a>
+        <a class="nextp navlink" href="07-thanks.html">Next: 07-thanks</a>
+    </section>
+
+    <footer class="site-footer">
+      <a href="https://github.com/maxogden/dat">dat on github</a>    </footer>
+  </div>
+</body>
+</html>

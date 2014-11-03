@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <title>Get Dat</title>
+  <style>
+    body {
+      font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+      font-weight: 300;
+      color: #333;
+      line-height: 1.65em;
+      font-size: 15px;
+    }
+
+    .site-header {
+      margin: 20px 0;
+      padding: 15px 0;
+      text-align: center;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .site-header-text {
+      font-size: 50px;
+      letter-spacing: 2px;
+      color: #333;
+      line-height: 1em;
+      font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+    }
+
+    .site-footer {
+      font-size: 12px;
+      color: #999;
+      margin-top: 20px;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    .wrapper {
+      width: 100%;
+      margin: auto;
+      max-width: 640px;
+    }
+
+    .navlink {
+      display: inline-block;
+      width: 49%;
+    }
+
+    .nextp { text-align: right; }
+
+    code, pre {
+      background: #f5f5f5;
+      border-radius: 2px;
+      font-size: 14px;
+      padding: 3px;
+    }
+
+    pre code { padding: 0;}
+
+    a {
+      color: #08c;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="site-header">
+      <a class="site-header-text" href="./index.html">Get Dat</a>
+    </header>
+
+    <section class="content">
+
+      <h1 id="dat-init">dat init</h1>
+<p>(When you are asked to &#39;run&#39; something it means you should enter it into the terminal on the left)</p>
+<ol>
+<li><p>Before you do anything, run <code>ls</code> to print out the contents of this folder.</p>
+</li>
+<li><p>There should be a <code>welcome.txt</code> file but nothing else. You can read it by typing <code>cat welcome.txt</code>.</p>
+</li>
+<li><p>Now run <code>ls -a</code>. The <code>-a</code> stands for &#39;all&#39; and makes <code>ls</code> show you hidden files as well (hidden filenames start with a <code>.</code>)</p>
+</li>
+<li><p>Run <code>dat init</code>. You will be prompted to enter a few pieces of optional information.</p>
+</li>
+<li><p>Dat should have created a file called <code>dat.json</code> as well as a hidden folder called <code>.dat</code>.</p>
+</li>
+<li><p>Run <code>ls -a</code> again and make sure you can see both of these.</p>
+</li>
+</ol>
+<p><code>dat.json</code> is for settings and configuration for this dat. The <code>.dat</code> folder is where the dat data actually lives. Note that it&#39;s a hidden folder! If something is hidden it generally means you don&#39;t need to open up the files inside very often.</p>
+
+        <a class="lastp navlink" href="00-welcome.html">Previous: 00-welcome</a>
+        <a class="nextp navlink" href="02-delete-and-listen.html">Next: 02-delete-and-listen</a>
+    </section>
+
+    <footer class="site-footer">
+      <a href="https://github.com/maxogden/dat">dat on github</a>    </footer>
+  </div>
+</body>
+</html>

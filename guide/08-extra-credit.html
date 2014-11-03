@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+  <title>Get Dat</title>
+  <style>
+    body {
+      font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+      font-weight: 300;
+      color: #333;
+      line-height: 1.65em;
+      font-size: 15px;
+    }
+
+    .site-header {
+      margin: 20px 0;
+      padding: 15px 0;
+      text-align: center;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .site-header-text {
+      font-size: 50px;
+      letter-spacing: 2px;
+      color: #333;
+      line-height: 1em;
+      font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+    }
+
+    .site-footer {
+      font-size: 12px;
+      color: #999;
+      margin-top: 20px;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    .wrapper {
+      width: 100%;
+      margin: auto;
+      max-width: 640px;
+    }
+
+    .navlink {
+      display: inline-block;
+      width: 49%;
+    }
+
+    .nextp { text-align: right; }
+
+    code, pre {
+      background: #f5f5f5;
+      border-radius: 2px;
+      font-size: 14px;
+      padding: 3px;
+    }
+
+    pre code { padding: 0;}
+
+    a {
+      color: #08c;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="site-header">
+      <a class="site-header-text" href="./index.html">Get Dat</a>
+    </header>
+
+    <section class="content">
+
+      <h1 id="extra-credit">Extra credit</h1>
+<p>In addition to cloning + sharing datasets (which is what <code>dat</code> is built for), you also need to be able to easily <em>use</em> datasets after you&#39;ve downloaded them. </p>
+<p>We have also been working on a tool called <a href="https://github.com/datproject/gasket" target="_blank">gasket</a> that is a complementary tool to <code>dat</code> that lets you package up a data pipeline so that others can easily run your pipeline.</p>
+<p><a href="https://github.com/bmpvieira" target="_blank">Bruno Vieira</a>, a bioinformatician on the Dat team, has built a pipeline using gasket that takes the <code>eukaryota</code> data that we worked with earlier and uses it to download genetic data and run a gene sequence alignment on the data using tools from his <a href="https://github.com/bionode" target="_blank">bionode project</a>.</p>
+<p>Here&#39;s the pipeline, split up into 4 parts:</p>
+<pre><code class="lang-JSON">{
+  &quot;import-data&quot;: [
+    &quot;bionode-ncbi search genome eukaryota&quot;,
+    &quot;dat import --json --primary=uid&quot;
+  ],
+  &quot;search-ncbi&quot;: [
+    &quot;dat cat&quot;,
+    &quot;grep Guillardia&quot;,
+    &quot;tool-stream extractProperty assemblyid&quot;,
+    &quot;bionode-ncbi download assembly -&quot;,
+    &quot;tool-stream collectMatch status completed&quot;,
+    &quot;tool-stream extractProperty uid&quot;,
+    &quot;bionode-ncbi link assembly bioproject -&quot;,
+    &quot;tool-stream extractProperty destUID&quot;,
+    &quot;bionode-ncbi link bioproject sra -&quot;,
+    &quot;tool-stream extractProperty destUID&quot;,
+    &quot;grep 35526&quot;,
+    &quot;bionode-ncbi download sra -&quot;,
+    &quot;tool-stream collectMatch status completed&quot;,
+    &quot;tee &gt; metadata.json&quot;
+  ],
+  &quot;index-and-align&quot;: [
+    &quot;cat metadata.json&quot;,
+    &quot;bionode-sra fastq-dump -&quot;,
+    &quot;tool-stream extractProperty destFile&quot;,
+    &quot;bionode-bwa mem **/*fna.gz&quot;
+  ], 
+  &quot;convert-to-bam&quot;: [
+    &quot;bionode-sam 35526/SRR070675.sam&quot;
+  ]
+}
+</code></pre>
+<p>First, make sure your terminal is inside the <code>eukaryota</code> directory that you cloned earlier.</p>
+<p>Create a new empty file called <code>gasket.json</code> and copy/paste the above pipeline into the file. Verify that the copy/paste worked by typing <code>gasket ls</code> and verify that it prints out the 4 different named pipelines:</p>
+<pre><code>$ gasket ls
+import-data
+search-ncbi
+index-and-align
+convert-to-bam
+</code></pre><p>You can run a named pipeline by running <code>gasket run NAME</code>, where <code>NAME</code> is the name of your pipeline.</p>
+<p>We can skip the <code>import-data</code> pipeline since we have already cloned the <code>eukaryota</code> data into a local dat database. </p>
+<p>The second pipeline, <code>search-ncbi</code>, starts by doing <code>dat cat</code> and then takes the data from dat and uses it to download additional datasets from NCBI (National Center for Biotechnology Information), a server where lots of bioinformatics datasets are hosted.</p>
+<p>Run this pipeline: <code>gasket run search-ncbi</code>.</p>
+<p>By default there is no output while the pipeline is running, but if you want to see what&#39;s happening under the hood you can run the pipeline again with the <code>DEBUG</code> environment variable set to <code>*</code> (to show all possible debug output):</p>
+<pre><code>DEBUG=* gasket run search-ncbi
+</code></pre><p>This pipeline should create a couple of folders and download some files into them.</p>
+<p>The next pipeline, <code>index-and-align</code>, uses the downloaded genetic data from the <code>search-ncbi</code> pipeline and runs process called a DNA sequence alignment. </p>
+<p>Try running the next pipeline, this one will take a few minutes to complete:</p>
+<pre><code>DEBUG=* gasket run index-and-align
+</code></pre><p>When this finishes, it should have created even more files in the folders from the previous step.</p>
+<p>The final pipeline, <code>convert-to-bam</code>, converts the otuput of the alignment into a different file format. This pipeline should be pretty fast.</p>
+<pre><code>DEBUG=* gasket run convert-to-bam
+</code></pre><p>Congratulations, you just ran a DNA sequence alignment!</p>
+
+        <a class="lastp navlink" href="07-thanks.html">Previous: 07-thanks</a>
+    </section>
+
+    <footer class="site-footer">
+      <a href="https://github.com/maxogden/dat">dat on github</a>    </footer>
+  </div>
+</body>
+</html>
