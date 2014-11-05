@@ -3,6 +3,15 @@ based on adventure-time for get-dat https://github.com/maxogden/get-dat
 
 ### Run the demo
 
-- install docker (docker for linux, boot2docker for mac/windows)
-- install and run https://github.com/pkafei/samtools-adventure-time
-- install and run # adventure-time for samtools
+Server Setup
+* install and boot docker(docker for linux, boot2docker for mac/windows)
+* pull dockebrowser-server pkafei/docker_samtools
+* run `dockebrowser-server pkafei/docker_samtools`
+
+
+Client Setup
+* clone https://github.com/pkafei/samtools-adventure-time
+* navigate to 'samtools-adventure-time' directory
+* run `npm install`
+* run `npm start`
+* open a browser and enter `http://127.0.0.1:9966`
