@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+  <title>SAMtools Adventure-time</title>
+  <style>
+    body {
+      font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+      font-weight: 300;
+      color: #333;
+      line-height: 1.65em;
+      font-size: 15px;
+    }
+
+    .site-header {
+      margin: 20px 0;
+      padding: 15px 0;
+      text-align: center;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .site-header-text {
+      font-size: 50px;
+      letter-spacing: 2px;
+      color: #333;
+      line-height: 1em;
+      font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+    }
+
+    .site-footer {
+      font-size: 12px;
+      color: #999;
+      margin-top: 20px;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    .wrapper {
+      width: 100%;
+      margin: auto;
+      max-width: 640px;
+    }
+
+    .navlink {
+      display: inline-block;
+      width: 49%;
+    }
+
+    .nextp { text-align: right; }
+
+    code, pre {
+      background: #f5f5f5;
+      border-radius: 2px;
+      font-size: 14px;
+      padding: 3px;
+    }
+
+    pre code { padding: 0;}
+
+    a {
+      color: #08c;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="site-header">
+      <a class="site-header-text" href="./index.html">SAMtools Adventure-time</a>
+    </header>
+
+    <section class="content">
+
+      <p>File ex1.fa contains two sequences cut from the human genome
+build36. They were exatracted with command:</p>
+<p>  samtools faidx human_b36.fa 2:2043966-2045540 20:67967-69550</p>
+<p>Sequence names were changed manually for simplicity. File ex1.sam.gz
+contains MAQ alignments exatracted with:</p>
+<p>  (samtools view NA18507_maq.bam 2:2044001-2045500;
+   samtools view NA18507_maq.bam 20:68001-69500)</p>
+<p>and processed with `samtools fixmate&#39; to make it self-consistent as a
+standalone alignment.</p>
+<p>To try samtools, you may run the following commands:</p>
+<p>  samtools faidx ex1.fa                 # index the reference FASTA
+  samtools import ex1.fa.fai ex1.sam.gz ex1.bam   # SAM-&gt;BAM
+  samtools index ex1.bam                # index BAM
+  samtools tview ex1.bam ex1.fa         # view alignment
+  samtools pileup -cf ex1.fa ex1.bam    # pileup and consensus
+  samtools pileup -cf ex1.fa -t ex1.fa.fai ex1.sam.gz</p>
+
+        <a class="lastp navlink" href="02-samtools-in-adventuretime.html">Previous: 02-samtools-in-adventuretime</a>
+        <a class="nextp navlink" href="04-thanks.html">Next: 04-thanks</a>
+    </section>
+
+    <footer class="site-footer">
+      <a href="https://github.com/pkafei/samtools-adventure-time">SAMtools on github</a>    </footer>
+  </div>
+</body>
+</html>
