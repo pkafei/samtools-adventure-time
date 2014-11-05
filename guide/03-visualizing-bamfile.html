@@ -72,22 +72,14 @@
 
     <section class="content">
 
-      <p>File ex1.fa contains two sequences cut from the human genome
-build36. They were exatracted with command:</p>
-<p>  samtools faidx human_b36.fa 2:2043966-2045540 20:67967-69550</p>
-<p>Sequence names were changed manually for simplicity. File ex1.sam.gz
-contains MAQ alignments exatracted with:</p>
-<p>  (samtools view NA18507_maq.bam 2:2044001-2045500;
-   samtools view NA18507_maq.bam 20:68001-69500)</p>
-<p>and processed with `samtools fixmate&#39; to make it self-consistent as a
-standalone alignment.</p>
-<p>To try samtools, you may run the following commands:</p>
-<p>  samtools faidx ex1.fa                 # index the reference FASTA
-  samtools import ex1.fa.fai ex1.sam.gz ex1.bam   # SAM-&gt;BAM
-  samtools index ex1.bam                # index BAM
-  samtools tview ex1.bam ex1.fa         # view alignment
-  samtools pileup -cf ex1.fa ex1.bam    # pileup and consensus
-  samtools pileup -cf ex1.fa -t ex1.fa.fai ex1.sam.gz</p>
+      <p>To try samtools and visualize a BAM file run the following commands:</p>
+<ul>
+<li>cd samtools-0.1.19/examples</li>
+<li>samtools faidx ex1.fa                      # index the reference FASTA</li>
+<li>samtools import ex1.fa.fai ex1.sam.gz ex1.bam   # SAM-&gt;BAM</li>
+<li>samtools index ex1.bam                # index BAM</li>
+<li>samtools tview ex1.bam ex1.fa         # view alignment</li>
+</ul>
 
         <a class="lastp navlink" href="02-samtools-in-adventuretime.html">Previous: 02-samtools-in-adventuretime</a>
         <a class="nextp navlink" href="04-thanks.html">Next: 04-thanks</a>
