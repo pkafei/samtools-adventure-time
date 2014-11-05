@@ -5,7 +5,7 @@ based on adventure-time for get-dat https://github.com/maxogden/get-dat
 
 Server Setup
 * install and boot docker(docker for linux, boot2docker for mac/windows)
-* pull dockebrowser-server pkafei/docker_samtools
+* docker pull pkafei/docker_samtools
 * run `dockebrowser-server pkafei/docker_samtools`
 
 
